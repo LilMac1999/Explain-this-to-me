@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+  <title> Registry of Joint Stock Companies STEPS FAQ ChatBot</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='book.PNG') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='book.PNG') }}" class="icon" />
+  <h3>Registry of Joint Stock Companies STEPS FAQ ChatBot</h3>
+  <h5>Enter question about steps outlined in the Registry of Joint Stock Companies. For Example; 1) What are the pros and cons to the Partnership Legal Structure 2) How do you reserve a name for a new organization 3) How do you register the organization.</h5>
+  <form action="/" method="post">
+    <textarea name="reflection" placeholder="Enter your question" required /></textarea>
+    <input type="submit" value="Click for answer" />
+  </form>
+  {% if result %}
+<div class="result">{{ result }}</div>
+{% endif %}
+</body>
