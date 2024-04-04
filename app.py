@@ -17,7 +17,7 @@ def index():
             model="gpt-3.5-turbo",
             temperature=0.6,
             messages=[
-                {"role": "system","content": "Users will be able to ask for ideas or concepts be explained to them in simple terms as if explaing them to someone who is 12 years of age. For example explaing the plot of famous litary works or what and an idea like what a geopolitical economy is"},
+                {"role": "system","content": "Users will be able to ask for ideas or concepts be explained to them in simple terms as if explaing them to someone who is 12 years of age."},
                 {"role": "user", "content": question and answer}
             ]
         )
