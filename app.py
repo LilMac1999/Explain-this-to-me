@@ -18,7 +18,7 @@ def index():
             temperature=0.6,
             messages=[
                 {"role": "system","content": "Users will be able to ask for ideas or concepts be explained to them in simple terms as if explaing them to someone who is 12 years of age."},
-                {"role": "user", "content": question and answer}
+                {"role": "user", "content": response}
             ]
         )
         return redirect(url_for("index", result=response.choices[0].message.content))
