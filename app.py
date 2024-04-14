@@ -1,4 +1,4 @@
-import os
+import os, sqlite3
 
 from flask import Flask, redirect, render_template, request, url_for
 from openai import OpenAI
@@ -8,6 +8,10 @@ client = OpenAI(
 
 app = Flask(__name__)
 
+def get_db_connection():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.route("/", methods=("GET", "POST"))
 def index():
@@ -18,10 +22,16 @@ def index():
             temperature=0.6,
             messages=[
                 {"role": "system","content": "Users will be able to ask for ideas or concepts be explained to them in simple terms as if explaing them to someone who is 12 years of age."},
-                {"role": "user", "content": response}
+                {"role": "user", "content": reflection}
             ]
         )
-        return redirect(url_for("index", result=response.choices[0].message.content))
+        msg = response.choices[0].message.content
+        conn = get_db_connection()
+        conn.execute("INSERT INTO prompts (reflection, msg) VALUES (?, ?)",
+                     (reflection, msg))
+        conn.commit()
+        conn.close()
+        return redirect(url_for("index", result=msg))
 
     result = request.args.get("result")
     return render_template("index.html", result=result)
