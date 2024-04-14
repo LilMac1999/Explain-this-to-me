@@ -1,8 +1,8 @@
 # Explain-this-to-me
 App to help simplify key idea and concepts to help students in their writing process
 ## Table of Contents
-- [What is contained with in] (#whats-contained)
-- [How to Use] (#How to use)
+- [What-is-contained-with-in](#whats-contained)
+- [How-to-Use](#How-to-use)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Problems](#Problems)
